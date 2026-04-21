@@ -7,9 +7,10 @@ class Category(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
-    # Cambiamos CharField por ImageField para poder subir archivos
-    image = models.ImageField(upload_to='books_covers/') 
+    image = models.ImageField(upload_to='books_covers/')
     created_at = models.DateTimeField(auto_now_add=True)
+    # ASEGÚRATE DE QUE ESTÉ ASÍ:
+    update_at = models.DateTimeField(auto_now=True) 
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
